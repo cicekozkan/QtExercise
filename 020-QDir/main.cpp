@@ -1,20 +1,16 @@
 #include <QCoreApplication>
 #include <QDir>
-#include <QDebug>
+#include <QFileInfo>
 #include <iostream>
-#include <QStringList>
-#include <QString>
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-  QDir dir("C:\\Data\\QtExercise");
+  QDir dir("C:\\windows");
 
-  QStringList sl = dir.entryList(QDir::Files | QDir::Executable | QDir::Hidden);
-
-  for(QString name : sl)
-    qDebug() << name;
+  for(QFileInfo qf : dir.entryInfoList(QDir::Files | QDir::Executable))
+    cout << qf.fileName().toStdString() << ", " << qf.size() << endl;
 
   return 0;
 }
