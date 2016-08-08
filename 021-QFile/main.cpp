@@ -12,5 +12,9 @@ int main(int argc, char *argv[])
 
   cout << qba.size() << endl;
 
+  int b = qba.toInt();
+
+  cout << b << endl;
+
   return 0;
 }
