@@ -6,15 +6,11 @@ using namespace std;
 int main(int argc, char *argv[])
 {
   QByteArray qba;
+  int a = 1234;
 
-  for(int i = 0; i < 100; i++)
-    qba.push_back(i);
+  qba.setNum(a);
 
-  QByteArray result = qba.mid(10, 5);
-
-  for(unsigned char ch : result)
-    cout << (int)ch << " ";
-  cout << endl;
+  cout << qba.size() << endl;
 
   return 0;
 }
