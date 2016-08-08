@@ -5,16 +5,10 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-  QByteArray qba;
-  int a = 1234;
+  QByteArray qba = QByteArray::number(12.34);
 
-  qba.setNum(a);
-
-  cout << qba.size() << endl;
-
-  int b = qba.toInt();
-
-  cout << b << endl;
+  for(QByteArray::iterator iter = qba.begin(); iter != qba.end(); iter++)
+    cout << *iter << endl;
 
   return 0;
 }
