@@ -12,13 +12,9 @@ int main(int argc, char *argv[])
     exit(EXIT_FAILURE);
   }//end if file open
 
-  char buf[100 + 1];
-  qint64 n;
+  QByteArray qba = file.read(100);
 
-  n = file.read(buf, 100);
-  buf[n] = '\0';
-
-  cout << buf << endl;
+  cout << qba.toStdString() << endl;
 
   file.close();
 
