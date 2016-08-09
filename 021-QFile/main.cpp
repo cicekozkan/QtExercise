@@ -1,27 +1,22 @@
 #include <iostream>
 #include <QFile>
-#include <QTextStream>
+#include <QDataStream>
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-  QFile file("test.txt");
+  QFile file("test.dat");
 
-  if(!file.open(QIODevice::ReadOnly)){
+  if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)){
     cerr << "cannot open file!..\n";
     exit(EXIT_FAILURE);
   }//end if file open
 
-  QTextStream ts(&file);
-  int num;
+  QDataStream ds(&file);
 
-  for(;;){
-    ts >> num;
-    cout << num << endl;
-    if(ts.atEnd())
-      break;
-  }//end infinite for
+  for(int i = 0; i < 10; i++)
+    ds << i;
 
   file.close();
 
