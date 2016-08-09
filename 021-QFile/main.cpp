@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-  QFile file("test.txt");
+  QFile file("Book1.csv");
 
   if(!file.open(QIODevice::ReadOnly)){
     cerr << "cannot open file!..\n";
@@ -16,10 +16,15 @@ int main(int argc, char *argv[])
 
   QTextStream ts(&file);
 
-  QString str;
-
-  while(!(str = ts.readLine()).isNull())
-    cout << str.toStdString() << endl;
+  for(;;){
+    QString row = ts.readLine();
+    if(row.isNull())
+      break;
+    QStringList sl = row.split(",");
+    for(QString elem : sl)
+      cout << elem.toStdString() << "|";
+    cout << endl;
+  }//end infinite for
 
   file.close();
 
