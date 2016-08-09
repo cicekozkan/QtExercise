@@ -1,14 +1,23 @@
 #include <iostream>
-#include <QByteArray>
+#include <QFile>
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-  QByteArray qba = QByteArray::number(12.34);
+  QFile file("a.dat");
 
-  for(QByteArray::iterator iter = qba.begin(); iter != qba.end(); iter++)
-    cout << *iter << endl;
+  if(!file.open(QIODevice::WriteOnly)){
+    cerr << "cannot open file!..\n";
+    exit(EXIT_FAILURE);
+  }//end if file open
+
+  cout << "File exists?: " << (file.exists()?"Yes":"No") << endl;
+  cout << "Is file open?: " << (file.isOpen()?"Yes":"No") << endl;
+
+  cout << "OK!\n";
+
+  file.close();
 
   return 0;
 }
