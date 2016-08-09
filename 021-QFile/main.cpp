@@ -16,8 +16,10 @@ int main(int argc, char *argv[])
 
   QTextStream ts(&file);
 
-  QString str = ts.readAll();
-  cout << str.toStdString() << endl;
+  QString str;
+
+  while(!(str = ts.readLine()).isNull())
+    cout << str.toStdString() << endl;
 
   file.close();
 
