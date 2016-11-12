@@ -1,4 +1,5 @@
 #include <QtGui>
+#include <QDebug>
 #include "mainwindow.hpp"
 #include "ui_mainwindow.h"
 
@@ -25,6 +26,8 @@ void MainWindow::on_m_pushButtonOk_clicked()
     ui->m_treeView->setModel(slm);
 
     QModelIndex index = slm->index(3);
+    QVariant variant = slm->data(index, 0);
+    qDebug() << "Before we change the data at index 3 its value = " << variant.toString();
     slm->setData(index, "Tacettin");
 
     slm->insertRow(1);
