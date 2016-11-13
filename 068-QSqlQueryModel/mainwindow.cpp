@@ -32,6 +32,8 @@ void MainWindow::on_m_pushButtonOk_clicked()
     font.setBold(true);
 
     ui->m_tableView->horizontalHeader()->setFont(font);
+    qm->setHeaderData(0, Qt::Horizontal, "Sehir Ismi");
+    qm->setHeaderData(1, Qt::Horizontal, "Ulke Ismi");
 
     for(int i = 0; i < 25; i++){
         QSqlRecord record = qm->record(i);
