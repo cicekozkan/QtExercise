@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->m_tableView->horizontalHeader()->setFont(font);
     ui->m_tableView->resizeColumnsToContents();
     ui->m_tableView->resizeRowsToContents();
+    //ui->m_tableView->hideColumn(0);
 }
 
 MainWindow::~MainWindow()
