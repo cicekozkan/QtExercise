@@ -1,3 +1,4 @@
+#include <QDebug>
 #include "mainwindow.hpp"
 #include "ui_mainwindow.h"
 
@@ -21,7 +22,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_m_pushButtonOk_clicked()
 {
-    qDebug() << m_db.open();
+    m_db.open();
 
     QSqlQueryModel *qm = new QSqlQueryModel();
     qm->setQuery("SELECT Name, CountryCode FROM city ORDER BY Name");
@@ -31,5 +32,10 @@ void MainWindow::on_m_pushButtonOk_clicked()
     font.setBold(true);
 
     ui->m_tableView->horizontalHeader()->setFont(font);
+
+    for(int i = 0; i < 25; i++){
+        QSqlRecord record = qm->record(i);
+        qDebug() << record.value("Name").toString() << ", " << record.value(1).toString();
+    }
 
 }
