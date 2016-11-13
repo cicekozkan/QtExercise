@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_db = QSqlDatabase::addDatabase("QMYSQL");
     m_db.setHostName("localhost");
     m_db.setUserName("root");
-    m_db.setPassword("csd1993");
+    m_db.setPassword("$Oz502024");
     m_db.setDatabaseName("world");
 }
 
